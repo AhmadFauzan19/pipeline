@@ -1,0 +1,64 @@
+[2026-04-02 11:51:21] [INFO] ======================================================================
+[2026-04-02 11:51:21] [INFO]   SCRIPT      : homepass_per_odp_daily v2.0.0
+[2026-04-02 11:51:21] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-02 11:51:21] [INFO]   PYTHON      : 3.14.1
+[2026-04-02 11:51:21] [INFO]   DATE FILTER : 2026_04_01
+[2026-04-02 11:51:21] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp\homepass_per_odp_daily_2026_04_01.log
+[2026-04-02 11:51:21] [INFO] ======================================================================
+[2026-04-02 11:51:21] [INFO] [CLEANUP] Checking logs older than 30 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp
+[2026-04-02 11:51:21] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-02 11:51:21] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-02 11:51:21] [INFO] [ENV] All required variables loaded OK.
+[2026-04-02 11:51:21] [INFO] [EXTRACT] Target file    : homepass_per_odp_2026_04_01.csv
+[2026-04-02 11:51:21] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/homepass_per_odp/homepass_per_odp_2026_04_01.csv
+[2026-04-02 11:51:21] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_01.csv
+[2026-04-02 11:51:21] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-02 11:51:21] [INFO] [CLEANUP] Checking files older than 31 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp
+[2026-04-02 11:51:21] [INFO] [CLEANUP] Cutoff date: 2026-03-02 (file tanggal <= ini akan dihapus)
+[2026-04-02 11:51:21] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-02 11:51:21] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-02 11:51:22] [INFO] Authentication (password) successful!
+[2026-04-02 11:51:22] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-02 11:51:31] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-02 11:51:31] [INFO] [EXTRACT] File OK. Size: 28,334,432 bytes (27.02 MB)
+[2026-04-02 11:51:31] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_01.csv
+[2026-04-02 11:51:31] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-02 11:51:31] [INFO] [TRANSFORM] Input CSV  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_01.csv
+[2026-04-02 11:51:31] [INFO] [TRANSFORM] Input REF  : C:\Users\ahmadfan\Work\Code\pipeline\REF\Final Ref STO & Class WOK NGPP Vol 2 (154 WOK) v3.2 -per Desember 2025.xlsx
+[2026-04-02 11:51:31] [INFO] [TRANSFORM] Output     : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:51:31] [INFO] [CLEANUP] Checking files older than 31 days in: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp
+[2026-04-02 11:51:31] [INFO] [CLEANUP] Cutoff date: 2026-03-02 (file tanggal <= ini akan dihapus)
+[2026-04-02 11:51:31] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-02 11:51:31] [INFO] [TRANSFORM] Reading CSV ...
+[2026-04-02 11:51:31] [WARNING] [CLEAN] Line 7452 dibuang: expected 3 fields, got 4 | BAL,ODP-BAL-FC/19,01,1
+[2026-04-02 11:51:32] [INFO] [CLEAN] Selesai. 1 baris dibuang. File bersih: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_01_cleaned.csv
+[2026-04-02 11:51:32] [INFO] [TRANSFORM] CSV rows: 1280059, cols: ['sto', 'odp_name', 'total_homepass']
+[2026-04-02 11:51:32] [INFO] [TRANSFORM] Reading REF STO ...
+[2026-04-02 11:51:33] [INFO] [TRANSFORM] REF rows: 1295, cols: ['STO', 'AREA', 'REGIONAL New', 'BRANCH 2025', 'WOK Vol 2 (2025)']
+[2026-04-02 11:51:33] [INFO] [TRANSFORM] Join key cast OK. LEFT: 'sto', RIGHT: 'STO'
+[2026-04-02 11:51:33] [INFO] [TRANSFORM] Performing LEFT JOIN ...
+[2026-04-02 11:51:34] [INFO] [TRANSFORM] Join result: 1280532 rows
+[2026-04-02 11:51:34] [INFO] [TRANSFORM] Output cols: ['AREA', 'REGIONAL', 'BRANCH', 'WOK', 'STO', 'ODP NAME', 'TOTAL HOMEPASS']
+[2026-04-02 11:51:34] [INFO] [TRANSFORM] Area ditemukan    : 4
+[2026-04-02 11:51:34] [INFO] [TRANSFORM] Baris tanpa area  : 0
+[2026-04-02 11:51:42] [INFO] [TRANSFORM] Sheet 'AREA 1': 197250 baris
+[2026-04-02 11:52:01] [INFO] [TRANSFORM] Sheet 'AREA 2': 492224 baris
+[2026-04-02 11:52:14] [INFO] [TRANSFORM] Sheet 'AREA 3': 417147 baris
+[2026-04-02 11:52:23] [INFO] [TRANSFORM] Sheet 'AREA 4': 173911 baris
+[2026-04-02 11:53:28] [INFO] [TRANSFORM] Output saved to: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-02 11:53:29] [INFO] [LOAD] Target file   : homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-02 11:53:29] [INFO] [LOAD] Source file OK. Size: 36,983,964 bytes (35.27 MB)
+[2026-04-02 11:53:29] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-02 11:53:29] [INFO] [CLEANUP] Cutoff date: 2026-03-26 (file tanggal <= ini akan dihapus)
+[2026-04-02 11:53:29] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-02 11:53:29] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-02 11:53:29] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\homepass_per_odp_2026_04_01.xlsx
+[2026-04-02 11:53:29] [INFO] ======================================================================
+[2026-04-02 11:53:29] [INFO]   RESULT  : SUCCESS
+[2026-04-02 11:53:29] [INFO]   ELAPSED : 0:02:07
+[2026-04-02 11:53:29] [INFO] ======================================================================
