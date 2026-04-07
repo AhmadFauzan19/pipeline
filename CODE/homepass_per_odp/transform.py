@@ -50,7 +50,7 @@ MAX_ROWS_SHEET = 1_000_000
 FILE_PREFIX    = "homepass_per_odp_"
 FILE_EXT_OUT   = ".xlsx"
 DATE_FORMAT    = "%Y_%m_%d"
-RETENTION_DAYS = 31
+RETENTION_DAYS = 7
 
 ###############################################################################
 # FUNGSI BANTU

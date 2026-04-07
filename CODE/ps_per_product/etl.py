@@ -21,7 +21,7 @@ SCRIPT_NAME    = "ps_per_product_daily"
 
 HOMEDIR = os.getenv("HOMEDIR")
 LOGDIR             = os.path.join(HOMEDIR, "LOGS", "ps_per_product")
-LOG_RETENTION_DAYS = 30
+LOG_RETENTION_DAYS = 7
 
 ###############################################################################
 # SETUP

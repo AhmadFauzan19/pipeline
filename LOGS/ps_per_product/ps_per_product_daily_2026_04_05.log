@@ -1,0 +1,19 @@
+[2026-04-06 10:17:49] [INFO] ======================================================================
+[2026-04-06 10:17:49] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-06 10:17:49] [INFO]   PYTHON      : 3.14.1
+[2026-04-06 10:17:49] [INFO]   DATE FILTER : 2026_04_05
+[2026-04-06 10:17:49] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_05.log
+[2026-04-06 10:17:49] [INFO] ======================================================================
+[2026-04-06 10:17:49] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-06 10:17:49] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-06 10:17:49] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-06 10:17:49] [INFO] [ENV] All required variables loaded OK.
+[2026-04-06 10:17:49] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_05.csv
+[2026-04-06 10:17:49] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_05.csv
+[2026-04-06 10:17:49] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_05.csv
+[2026-04-06 10:17:49] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-06 10:17:49] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-06 10:17:49] [INFO] [CLEANUP] Cutoff date: 2026-03-30 (file tanggal <= ini akan dihapus)
+[2026-04-06 10:17:49] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-06 10:18:11] [ERROR] [PIPELINE] Extract FAILED: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+[2026-04-06 10:18:11] [ERROR] [PIPELINE] Pipeline aborted.

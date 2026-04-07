@@ -1,0 +1,136 @@
+[2026-04-07 11:25:11] [INFO] ======================================================================
+[2026-04-07 11:25:11] [INFO]   SCRIPT      : homepass_per_odp_daily v2.0.0
+[2026-04-07 11:25:11] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:25:11] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:25:11] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:25:11] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp\homepass_per_odp_daily_2026_04_06.log
+[2026-04-07 11:25:11] [INFO] ======================================================================
+[2026-04-07 11:25:11] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp
+[2026-04-07 11:25:11] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:25:11] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:25:11] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:25:11] [INFO] [EXTRACT] Target file    : homepass_per_odp_2026_04_06.csv
+[2026-04-07 11:25:11] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/homepass_per_odp/homepass_per_odp_2026_04_06.csv
+[2026-04-07 11:25:11] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 11:25:11] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:25:11] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp
+[2026-04-07 11:25:11] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:25:11] [WARNING] [CLEANUP] Skip 'homepass_per_odp_2026_04_01_cleaned.csv': format tanggal tidak dikenali
+[2026-04-07 11:25:11] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:25:11] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:25:12] [INFO] Authentication (password) successful!
+[2026-04-07 11:25:12] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:26:04] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:26:04] [INFO] [EXTRACT] File OK. Size: 28,434,026 bytes (27.12 MB)
+[2026-04-07 11:26:04] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 11:26:04] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:26:04] [INFO] [TRANSFORM] Input CSV  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 11:26:04] [INFO] [TRANSFORM] Input REF  : C:\Users\ahmadfan\Work\Code\pipeline\REF\Final Ref STO & Class WOK NGPP Vol 2 (154 WOK) v3.2 -per Desember 2025.xlsx
+[2026-04-07 11:26:04] [INFO] [TRANSFORM] Output     : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:26:04] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp
+[2026-04-07 11:26:04] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:26:04] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:26:04] [INFO] [TRANSFORM] Reading CSV ...
+[2026-04-07 11:26:04] [WARNING] [CLEAN] Line 7483 dibuang: expected 3 fields, got 4 | BAL,ODP-BAL-FC/19,01,1
+[2026-04-07 11:26:05] [INFO] [CLEAN] Selesai. 1 baris dibuang. File bersih: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06_cleaned.csv
+[2026-04-07 11:26:05] [INFO] [TRANSFORM] CSV rows: 1284524, cols: ['sto', 'odp_name', 'total_homepass']
+[2026-04-07 11:26:05] [INFO] [TRANSFORM] Reading REF STO ...
+[2026-04-07 11:26:06] [INFO] [TRANSFORM] REF rows: 1295, cols: ['STO', 'AREA', 'REGIONAL New', 'BRANCH 2025', 'WOK Vol 2 (2025)']
+[2026-04-07 11:26:06] [INFO] [TRANSFORM] Join key cast OK. LEFT: 'sto', RIGHT: 'STO'
+[2026-04-07 11:26:06] [INFO] [TRANSFORM] Performing LEFT JOIN ...
+[2026-04-07 11:26:06] [INFO] [TRANSFORM] Join result: 1285008 rows
+[2026-04-07 11:26:07] [INFO] [TRANSFORM] Output cols: ['AREA', 'REGIONAL', 'BRANCH', 'WOK', 'STO', 'ODP NAME', 'TOTAL HOMEPASS']
+[2026-04-07 11:26:07] [INFO] [TRANSFORM] Area ditemukan    : 4
+[2026-04-07 11:26:07] [INFO] [TRANSFORM] Baris tanpa area  : 0
+[2026-04-07 11:26:16] [INFO] [TRANSFORM] Sheet 'AREA 1': 198417 baris
+[2026-04-07 11:26:37] [INFO] [TRANSFORM] Sheet 'AREA 2': 492690 baris
+[2026-04-07 11:26:57] [INFO] [TRANSFORM] Sheet 'AREA 3': 418185 baris
+[2026-04-07 11:27:06] [INFO] [TRANSFORM] Sheet 'AREA 4': 175716 baris
+[2026-04-07 11:29:03] [INFO] [TRANSFORM] Output saved to: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:29:04] [INFO] [LOAD] Target file   : homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:29:04] [INFO] [LOAD] Source file OK. Size: 37,117,987 bytes (35.40 MB)
+[2026-04-07 11:29:04] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:29:04] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:29:04] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:29:04] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:29:04] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 11:29:04] [INFO] ======================================================================
+[2026-04-07 11:29:04] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:29:04] [INFO]   ELAPSED : 0:03:52
+[2026-04-07 11:29:04] [INFO] ======================================================================
+[2026-04-07 14:23:05] [INFO] ======================================================================
+[2026-04-07 14:23:05] [INFO]   SCRIPT      : homepass_per_odp_daily v2.0.0
+[2026-04-07 14:23:05] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 14:23:05] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 14:23:05] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 14:23:05] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp\homepass_per_odp_daily_2026_04_06.log
+[2026-04-07 14:23:05] [INFO] ======================================================================
+[2026-04-07 14:23:05] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\homepass_per_odp
+[2026-04-07 14:23:05] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:23:05] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 14:23:05] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 14:23:05] [INFO] [EXTRACT] Target file    : homepass_per_odp_2026_04_06.csv
+[2026-04-07 14:23:05] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/homepass_per_odp/homepass_per_odp_2026_04_06.csv
+[2026-04-07 14:23:05] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 14:23:05] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 14:23:05] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp
+[2026-04-07 14:23:05] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:23:05] [WARNING] [CLEANUP] Skip 'homepass_per_odp_2026_04_01_cleaned.csv': format tanggal tidak dikenali
+[2026-04-07 14:23:05] [WARNING] [CLEANUP] Skip 'homepass_per_odp_2026_04_06_cleaned.csv': format tanggal tidak dikenali
+[2026-04-07 14:23:05] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:23:05] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 14:23:06] [INFO] Authentication (password) successful!
+[2026-04-07 14:23:06] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 14:23:17] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 14:23:17] [INFO] [EXTRACT] File OK. Size: 28,434,026 bytes (27.12 MB)
+[2026-04-07 14:23:17] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 14:23:17] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 14:23:17] [INFO] [TRANSFORM] Input CSV  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06.csv
+[2026-04-07 14:23:17] [INFO] [TRANSFORM] Input REF  : C:\Users\ahmadfan\Work\Code\pipeline\REF\Final Ref STO & Class WOK NGPP Vol 2 (154 WOK) v3.2 -per Desember 2025.xlsx
+[2026-04-07 14:23:17] [INFO] [TRANSFORM] Output     : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:23:17] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp
+[2026-04-07 14:23:17] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:23:17] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:23:17] [INFO] [TRANSFORM] Reading CSV ...
+[2026-04-07 14:23:17] [WARNING] [CLEAN] Line 7483 dibuang: expected 3 fields, got 4 | BAL,ODP-BAL-FC/19,01,1
+[2026-04-07 14:23:17] [INFO] [CLEAN] Selesai. 1 baris dibuang. File bersih: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\homepass_per_odp\homepass_per_odp_2026_04_06_cleaned.csv
+[2026-04-07 14:23:18] [INFO] [TRANSFORM] CSV rows: 1284524, cols: ['sto', 'odp_name', 'total_homepass']
+[2026-04-07 14:23:18] [INFO] [TRANSFORM] Reading REF STO ...
+[2026-04-07 14:23:18] [INFO] [TRANSFORM] REF rows: 1295, cols: ['STO', 'AREA', 'REGIONAL New', 'BRANCH 2025', 'WOK Vol 2 (2025)']
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Join key cast OK. LEFT: 'sto', RIGHT: 'STO'
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Performing LEFT JOIN ...
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Join result: 1285008 rows
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Output cols: ['AREA', 'REGIONAL', 'BRANCH', 'WOK', 'STO', 'ODP NAME', 'TOTAL HOMEPASS']
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Area ditemukan    : 4
+[2026-04-07 14:23:19] [INFO] [TRANSFORM] Baris tanpa area  : 0
+[2026-04-07 14:23:25] [INFO] [TRANSFORM] Sheet 'AREA 1': 198417 baris
+[2026-04-07 14:23:40] [INFO] [TRANSFORM] Sheet 'AREA 2': 492690 baris
+[2026-04-07 14:23:53] [INFO] [TRANSFORM] Sheet 'AREA 3': 418185 baris
+[2026-04-07 14:23:58] [INFO] [TRANSFORM] Sheet 'AREA 4': 175716 baris
+[2026-04-07 14:24:51] [INFO] [TRANSFORM] Output saved to: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 14:24:51] [INFO] [LOAD] Target file   : homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\homepass_per_odp\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:24:51] [INFO] [LOAD] Source file OK. Size: 37,117,987 bytes (35.40 MB)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Deleted: homepass_per_odp_2026_03_25.xlsx (date: 2026-03-25)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Deleted: homepass_per_odp_2026_03_26.xlsx (date: 2026-03-26)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Deleted: homepass_per_odp_2026_03_28.xlsx (date: 2026-03-28)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Deleted: homepass_per_odp_2026_03_29.xlsx (date: 2026-03-29)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Deleted: homepass_per_odp_2026_03_30.xlsx (date: 2026-03-30)
+[2026-04-07 14:24:51] [INFO] [CLEANUP] Done. 5 file(s) deleted.
+[2026-04-07 14:24:51] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 14:24:51] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\homepass_per_odp_2026_04_06.xlsx
+[2026-04-07 14:24:51] [INFO] ======================================================================
+[2026-04-07 14:24:51] [INFO]   RESULT  : SUCCESS
+[2026-04-07 14:24:51] [INFO]   ELAPSED : 0:01:46
+[2026-04-07 14:24:51] [INFO] ======================================================================

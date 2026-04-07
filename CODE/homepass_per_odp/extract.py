@@ -32,7 +32,7 @@ DOWNLOADDIR = os.path.join(HOMEDIR, "DOWNLOAD", "homepass_per_odp")
 FILE_PREFIX    = "homepass_per_odp_"
 FILE_EXT       = ".csv"
 DATE_FORMAT    = "%Y_%m_%d"
-RETENTION_DAYS = 31
+RETENTION_DAYS = 7
 
 ###############################################################################
 # FUNGSI BANTU

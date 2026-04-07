@@ -1,0 +1,643 @@
+[2026-04-07 10:41:18] [INFO] ======================================================================
+[2026-04-07 10:41:18] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 10:41:18] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 10:41:18] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 10:41:18] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 10:41:18] [INFO] ======================================================================
+[2026-04-07 10:41:18] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 10:41:18] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 10:41:18] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 10:41:18] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 10:41:18] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 10:41:18] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 10:41:18] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 10:41:18] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 10:41:18] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 10:41:18] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 10:41:18] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 10:41:18] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 10:41:19] [INFO] Authentication (password) successful!
+[2026-04-07 10:41:19] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 10:41:19] [ERROR] [PIPELINE] Extract FAILED: scp: /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv: No such file or directory
+[2026-04-07 10:41:19] [ERROR] [PIPELINE] Pipeline aborted.
+[2026-04-07 10:56:46] [INFO] ======================================================================
+[2026-04-07 10:56:47] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 10:56:47] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 10:56:47] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 10:56:47] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 10:56:47] [INFO] ======================================================================
+[2026-04-07 10:56:47] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 10:56:47] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 10:56:47] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 10:56:47] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 10:56:47] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 10:56:47] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 10:56:47] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 10:56:47] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 10:56:47] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 10:56:47] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 10:56:47] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 10:56:47] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 10:56:47] [INFO] Authentication (password) successful!
+[2026-04-07 10:56:47] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 10:56:48] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 10:56:48] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 10:56:48] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 10:56:48] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 10:56:48] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 10:56:48] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:48] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 10:56:48] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 10:56:48] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 10:56:48] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 10:56:48] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 10:56:49] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 10:56:49] [INFO] [LOAD] Source file OK. Size: 43,999 bytes (0.04 MB)
+[2026-04-07 10:56:49] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 10:56:49] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 10:56:49] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 10:56:49] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 10:56:49] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 10:56:49] [INFO] ======================================================================
+[2026-04-07 10:56:49] [INFO]   RESULT  : SUCCESS
+[2026-04-07 10:56:49] [INFO]   ELAPSED : 0:00:02
+[2026-04-07 10:56:49] [INFO] ======================================================================
+[2026-04-07 11:08:53] [INFO] ======================================================================
+[2026-04-07 11:08:54] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:08:54] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:08:54] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:08:54] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:08:54] [INFO] ======================================================================
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:08:54] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:08:54] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:08:54] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:08:54] [INFO] Authentication (password) successful!
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:08:54] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:08:54] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:08:54] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:08:54] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:08:54] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:08:54] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:08:54] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:08:54] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:08:54] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:08:54] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:08:55] [ERROR] [PIPELINE] Transform FAILED: [Errno 13] Permission denied: 'C:\\Users\\ahmadfan\\Work\\Code\\pipeline\\OUTPUT\\ps_per_product\\ps_per_product_2026_04_06.xlsx'
+[2026-04-07 11:08:55] [ERROR] [PIPELINE] Pipeline aborted. Load step skipped.
+[2026-04-07 11:09:10] [INFO] ======================================================================
+[2026-04-07 11:09:10] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:09:10] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:09:10] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:09:10] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:09:10] [INFO] ======================================================================
+[2026-04-07 11:09:10] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:09:10] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:09:10] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:09:10] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:09:10] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:09:10] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:09:10] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:09:10] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:09:10] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:09:10] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:09:10] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:09:10] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:09:11] [INFO] Authentication (password) successful!
+[2026-04-07 11:09:11] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:09:11] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:09:11] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:09:11] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:09:11] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:09:11] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:09:11] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:11] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:09:11] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:09:11] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:09:11] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:09:11] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:09:12] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:09:12] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 11:09:12] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:09:12] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:09:12] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:09:12] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:09:12] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:09:12] [INFO] ======================================================================
+[2026-04-07 11:09:12] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:09:12] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:09:12] [INFO] ======================================================================
+[2026-04-07 11:14:35] [INFO] ======================================================================
+[2026-04-07 11:14:35] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:14:35] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:14:35] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:14:35] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:14:35] [INFO] ======================================================================
+[2026-04-07 11:14:35] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:14:35] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:14:35] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:14:35] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:14:35] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:14:35] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:14:35] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:14:35] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:14:35] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:14:35] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:14:35] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:14:35] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:14:36] [INFO] Authentication (password) successful!
+[2026-04-07 11:14:36] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:14:36] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:14:36] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:14:36] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:14:36] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:14:36] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:14:36] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:36] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:14:36] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:14:36] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:14:36] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:14:36] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:14:37] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:14:37] [INFO] [LOAD] Source file OK. Size: 40,631 bytes (0.04 MB)
+[2026-04-07 11:14:37] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:14:37] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:14:37] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:14:37] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:14:37] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:14:37] [INFO] ======================================================================
+[2026-04-07 11:14:37] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:14:37] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:14:37] [INFO] ======================================================================
+[2026-04-07 11:16:29] [INFO] ======================================================================
+[2026-04-07 11:16:29] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:16:29] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:16:29] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:16:29] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:16:29] [INFO] ======================================================================
+[2026-04-07 11:16:29] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:16:29] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:29] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:16:29] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:16:29] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:29] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:29] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:29] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:16:29] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:16:29] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:16:29] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:29] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:16:29] [INFO] Authentication (password) successful!
+[2026-04-07 11:16:29] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:16:30] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:16:30] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:16:30] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:30] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:16:30] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:30] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:16:30] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:16:30] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:16:30] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:16:30] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:16:30] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:16:30] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 11:16:30] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:16:30] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:16:30] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:30] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:16:30] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:30] [INFO] ======================================================================
+[2026-04-07 11:16:30] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:16:30] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:16:30] [INFO] ======================================================================
+[2026-04-07 11:16:53] [INFO] ======================================================================
+[2026-04-07 11:16:53] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:16:53] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:16:53] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:16:53] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:16:53] [INFO] ======================================================================
+[2026-04-07 11:16:53] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:16:53] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:53] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:16:53] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:16:53] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:53] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:53] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:53] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:16:53] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:16:53] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:16:53] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:53] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:16:53] [INFO] Authentication (password) successful!
+[2026-04-07 11:16:53] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:16:54] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:16:54] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:16:54] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:54] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:16:54] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:16:54] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:16:54] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:16:54] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:16:54] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:16:54] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:16:54] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:16:54] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 11:16:54] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:16:54] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:16:54] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:16:54] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:16:54] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:16:54] [INFO] ======================================================================
+[2026-04-07 11:16:54] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:16:54] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:16:54] [INFO] ======================================================================
+[2026-04-07 11:17:41] [INFO] ======================================================================
+[2026-04-07 11:17:41] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:17:41] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:17:41] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:17:41] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:17:41] [INFO] ======================================================================
+[2026-04-07 11:17:41] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:17:41] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:17:41] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:17:41] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:17:41] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:17:41] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:17:41] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:17:41] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:17:41] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:17:41] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:17:41] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:17:41] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:17:41] [INFO] Authentication (password) successful!
+[2026-04-07 11:17:41] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:17:42] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:17:42] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:17:42] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:17:42] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:17:42] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:17:42] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:17:42] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:17:42] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:17:42] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:17:42] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:17:42] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:17:42] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 11:17:42] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:17:42] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:17:42] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:17:42] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:17:42] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:17:42] [INFO] ======================================================================
+[2026-04-07 11:17:42] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:17:42] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:17:42] [INFO] ======================================================================
+[2026-04-07 11:24:15] [INFO] ======================================================================
+[2026-04-07 11:24:15] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 11:24:15] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 11:24:15] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 11:24:15] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 11:24:15] [INFO] ======================================================================
+[2026-04-07 11:24:15] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 11:24:15] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:24:15] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 11:24:15] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 11:24:15] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 11:24:15] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 11:24:15] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:24:15] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 11:24:15] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 11:24:15] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:24:15] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:24:15] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 11:24:16] [INFO] Authentication (password) successful!
+[2026-04-07 11:24:16] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 11:24:16] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 11:24:16] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 11:24:16] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:24:16] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 11:24:16] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 11:24:16] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:16] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 11:24:16] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 11:24:16] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 11:24:16] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 11:24:16] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 11:24:17] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:24:17] [INFO] [LOAD] Source file OK. Size: 40,631 bytes (0.04 MB)
+[2026-04-07 11:24:17] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 11:24:17] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 11:24:17] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 11:24:17] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 11:24:17] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 11:24:17] [INFO] ======================================================================
+[2026-04-07 11:24:17] [INFO]   RESULT  : SUCCESS
+[2026-04-07 11:24:17] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 11:24:17] [INFO] ======================================================================
+[2026-04-07 14:18:34] [INFO] ======================================================================
+[2026-04-07 14:18:34] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 14:18:34] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 14:18:34] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 14:18:34] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 14:18:34] [INFO] ======================================================================
+[2026-04-07 14:18:34] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 14:18:34] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:18:34] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 14:18:34] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 14:18:34] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 14:18:34] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 14:18:34] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:18:34] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 14:18:34] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 14:18:34] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:18:34] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:18:34] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 14:18:35] [INFO] Authentication (password) successful!
+[2026-04-07 14:18:35] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 14:18:35] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 14:18:35] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 14:18:35] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:18:35] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 14:18:35] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:18:35] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 14:18:35] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 14:18:35] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 14:18:35] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 14:18:35] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 14:18:35] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 14:18:35] [INFO] [LOAD] Source file OK. Size: 40,629 bytes (0.04 MB)
+[2026-04-07 14:18:35] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular
+[2026-04-07 14:18:35] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:18:35] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:18:35] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 14:18:35] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:18:35] [INFO] ======================================================================
+[2026-04-07 14:18:35] [INFO]   RESULT  : SUCCESS
+[2026-04-07 14:18:35] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 14:18:35] [INFO] ======================================================================
+[2026-04-07 14:20:29] [INFO] ======================================================================
+[2026-04-07 14:20:29] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 14:20:29] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 14:20:29] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 14:20:29] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 14:20:29] [INFO] ======================================================================
+[2026-04-07 14:20:29] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 14:20:29] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:20:29] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 14:20:29] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 14:20:29] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 14:20:29] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 14:20:29] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:20:29] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 14:20:29] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 14:20:29] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:20:29] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:20:29] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 14:20:30] [INFO] Authentication (password) successful!
+[2026-04-07 14:20:30] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 14:20:31] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 14:20:31] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 14:20:31] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:20:31] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 14:20:31] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:20:31] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 14:20:31] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 14:20:31] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 14:20:31] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 14:20:31] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 14:20:31] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:20:31] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 14:20:31] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:20:31] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:20:31] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:20:31] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 14:20:31] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:20:31] [INFO] ======================================================================
+[2026-04-07 14:20:31] [INFO]   RESULT  : SUCCESS
+[2026-04-07 14:20:31] [INFO]   ELAPSED : 0:00:02
+[2026-04-07 14:20:31] [INFO] ======================================================================
+[2026-04-07 14:21:46] [INFO] ======================================================================
+[2026-04-07 14:21:46] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 14:21:46] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 14:21:46] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 14:21:46] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 14:21:46] [INFO] ======================================================================
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:21:46] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 14:21:46] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:21:46] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 14:21:46] [INFO] Authentication (password) successful!
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 14:21:46] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 14:21:46] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 14:21:46] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:21:46] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 14:21:46] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:21:46] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 14:21:46] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 14:21:46] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 14:21:46] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 14:21:46] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 14:21:47] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:21:47] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 14:21:47] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass
+[2026-04-07 14:21:47] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:21:47] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:21:47] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 14:21:47] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:21:47] [INFO] ======================================================================
+[2026-04-07 14:21:47] [INFO]   RESULT  : SUCCESS
+[2026-04-07 14:21:47] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 14:21:47] [INFO] ======================================================================
+[2026-04-07 14:25:58] [INFO] ======================================================================
+[2026-04-07 14:25:58] [INFO]   HOSTNAME    : PBT225128-25
+[2026-04-07 14:25:58] [INFO]   PYTHON      : 3.14.1
+[2026-04-07 14:25:58] [INFO]   DATE FILTER : 2026_04_06
+[2026-04-07 14:25:58] [INFO]   LOGFILE     : C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product\ps_per_product_daily_2026_04_06.log
+[2026-04-07 14:25:58] [INFO] ======================================================================
+[2026-04-07 14:25:58] [INFO] [CLEANUP] Checking logs older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\LOGS\ps_per_product
+[2026-04-07 14:25:58] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:25:58] [INFO] [PIPELINE] Step 1/3 : EXTRACT - download from VM1
+[2026-04-07 14:25:58] [INFO] [ENV] All required variables loaded OK.
+[2026-04-07 14:25:58] [INFO] [EXTRACT] Target file    : ps_per_product_2026_04_06.csv
+[2026-04-07 14:25:58] [INFO] [EXTRACT] Remote path    : /data/gd_sls_stgy/ahmadfan/OUTPUT/ps_per_product/ps_per_product_2026_04_06.csv
+[2026-04-07 14:25:58] [INFO] [EXTRACT] Local dest     : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:25:58] [INFO] [EXTRACT] Connecting to  : 10.53.176.18:22 (user: ahmadfan)
+[2026-04-07 14:25:58] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product
+[2026-04-07 14:25:58] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:25:58] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:25:58] [INFO] Connected (version 2.0, client OpenSSH_8.0)
+[2026-04-07 14:25:59] [INFO] Authentication (password) successful!
+[2026-04-07 14:25:59] [INFO] [EXTRACT] Connected. Starting download...
+[2026-04-07 14:25:59] [INFO] [EXTRACT] Download complete. Connection closed.
+[2026-04-07 14:25:59] [INFO] [EXTRACT] File OK. Size: 13,280 bytes (0.01 MB)
+[2026-04-07 14:25:59] [INFO] [PIPELINE] Extract OK. Local file: C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:25:59] [INFO] [PIPELINE] Step 2/3 : TRANSFORM - join & write Excel
+[2026-04-07 14:25:59] [INFO] [TRANSFORM] Input  : C:\Users\ahmadfan\Work\Code\pipeline\DOWNLOAD\ps_per_product\ps_per_product_2026_04_06.csv
+[2026-04-07 14:25:59] [INFO] [TRANSFORM] Output : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:25:59] [INFO] [CLEANUP] Cek file lebih dari 7 hari di: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product
+[2026-04-07 14:25:59] [INFO] [CLEANUP] Selesai. 0 file dihapus.
+[2026-04-07 14:25:59] [INFO] [READ] 154 baris, kolom: ['area', 'region', 'branch', 'wok', 'eznet_today', 'eznet_mtd', 'eznet_lastmtd', 'onedynamic_today', 'onedynamic_mtd', 'onedynamic_lastmtd', 'other_today', 'other_mtd', 'other_lastmtd', 'total_today', 'total_mtd', 'total_lastmtd']
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Membangun summary semua level ...
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Grand total MTD: 30,475
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Level ['area']: 4 baris + 1 total
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Level ['area', 'region']: 12 baris + 1 total
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Level ['area', 'region', 'branch']: 61 baris + 1 total
+[2026-04-07 14:25:59] [INFO] [SUMMARY] Level ['area', 'region', 'branch', 'wok']: 154 baris + 1 total
+[2026-04-07 14:25:59] [INFO] [WRITE] Menulis Excel: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [WRITE] Selesai. Output: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [PIPELINE] Transform OK. Output file: C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [PIPELINE] Step 3/3 : LOAD - copy to OneDrive
+[2026-04-07 14:26:00] [INFO] [LOAD] Target file   : ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [LOAD] Source        : C:\Users\ahmadfan\Work\Code\pipeline\OUTPUT\ps_per_product\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [LOAD] Destination   : C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data PS
+[2026-04-07 14:26:00] [INFO] [LOAD] Source file OK. Size: 40,628 bytes (0.04 MB)
+[2026-04-07 14:26:00] [INFO] [CLEANUP] Checking files older than 7 days in: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data PS
+[2026-04-07 14:26:00] [INFO] [CLEANUP] Cutoff date: 2026-03-31 (file tanggal <= ini akan dihapus)
+[2026-04-07 14:26:00] [INFO] [CLEANUP] Done. 0 file(s) deleted.
+[2026-04-07 14:26:00] [INFO] [LOAD] Copy complete. File will sync automatically.
+[2026-04-07 14:26:00] [INFO] [LOAD] Dest path: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data PS\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] [PIPELINE] Load OK. Dest file: C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data PS\ps_per_product_2026_04_06.xlsx
+[2026-04-07 14:26:00] [INFO] ======================================================================
+[2026-04-07 14:26:00] [INFO]   RESULT  : SUCCESS
+[2026-04-07 14:26:00] [INFO]   ELAPSED : 0:00:01
+[2026-04-07 14:26:00] [INFO] ======================================================================

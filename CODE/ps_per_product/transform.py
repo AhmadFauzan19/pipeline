@@ -1,6 +1,8 @@
 ###############################################################################
-### transform.py
-### Join CSV hasil extract dengan referensi STO, output Excel split per AREA
+### transform_sales.py
+### Baca CSV sales data, output Excel:
+###   Sheet 1 "Data"    : raw data dari CSV
+###   Sheet 2 "Summary" : summary 4 level (AREA / REGION / BRANCH / WOK)
 ###############################################################################
 
 import os
@@ -18,266 +20,337 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 ###############################################################################
 # CONFIG
 ###############################################################################
-HOMEDIR = os.getenv("HOMEDIR")
-DOWNLOADDIR = os.path.join(HOMEDIR, "DOWNLOAD", "homepass_per_odp")
-OUTPUTDIR   = os.path.join(HOMEDIR, "OUTPUT",   "homepass_per_odp")
-FILE_RIGHT   = os.path.join(HOMEDIR, "REF",   "Final Ref STO & Class WOK NGPP Vol 2 (154 WOK) v3.2 -per Desember 2025.xlsx")
+HOMEDIR   = os.getenv("HOMEDIR")
+INPUTDIR  = os.path.join(HOMEDIR, "DOWNLOAD", "ps_per_product")
+OUTPUTDIR = os.path.join(HOMEDIR, "OUTPUT",   "ps_per_product")
 
-SHEET_RIGHT = "Ref STO"
-COLS_RIGHT  = ["STO", "AREA ", "REGIONAL New", "BRANCH 2025", "WOK Vol 2 (2025)"]
-
-JOIN_ON   = {"left": "sto", "right": "STO"}
-JOIN_TYPE = "left"
-
-DROP_COLS = ["STO"]
-
-RENAME_COLS = {
-    "sto"              : "STO",
-    "AREA "            : "AREA",
-    "REGIONAL New"     : "REGIONAL",
-    "BRANCH 2025"      : "BRANCH",
-    "WOK Vol 2 (2025)" : "WOK",
-    "odp_name"         : "ODP NAME",
-    "total_homepass"   : "TOTAL HOMEPASS",
-}
-
-OUTPUT_COL_ORDER = ["AREA", "REGIONAL", "BRANCH", "WOK", "STO", "ODP NAME", "TOTAL HOMEPASS"]
-
-SHEET_COL      = "AREA"
-SHEET_EMPTY    = "NO AREA"
-MAX_ROWS_SHEET = 1_000_000
-
-FILE_PREFIX    = "homepass_per_odp_"
+FILE_PREFIX    = "ps_per_product_"
+FILE_EXT_IN    = ".csv"
 FILE_EXT_OUT   = ".xlsx"
 DATE_FORMAT    = "%Y_%m_%d"
-RETENTION_DAYS = 31
+RETENTION_DAYS = 7
+
+# Kolom dimensi
+DIM_COLS = ["area", "region", "branch", "wok"]
+
+# Kolom metrik dari CSV
+METRIC_TODAY    = ["eznet_today", "onedynamic_today", "other_today"]
+METRIC_MTD      = ["eznet_mtd", "onedynamic_mtd", "other_mtd"]
+METRIC_LAST_MTD = ["eznet_lastmtd", "onedynamic_lastmtd", "other_lastmtd"]
+METRIC_TOTAL    = ["total_today", "total_mtd", "total_lastmtd"]
+
+ALL_METRIC_COLS = METRIC_TODAY + METRIC_MTD + METRIC_LAST_MTD + METRIC_TOTAL
+
+# Label kolom output yang rapi
+COL_RENAME = {
+    "area": "Area",
+    "region": "Region",
+    "branch": "Branch",
+    "wok": "WOK",
+    "eznet_today": "EZnet Today",
+    "eznet_mtd": "EZnet MTD",
+    "eznet_lastmtd": "EZnet Last MTD",
+    "onedynamic_today": "One Dynamic Today",
+    "onedynamic_mtd": "One Dynamic MTD",
+    "onedynamic_lastmtd": "One Dynamic Last MTD",
+    "other_today": "Other Today",
+    "other_mtd": "Other MTD",
+    "other_lastmtd": "Other Last MTD",
+    "total_today": "Total Today",
+    "total_mtd": "Total MTD",
+    "total_lastmtd": "Total Last MTD",
+    "contribution_sp": "Contribution SP",
+    "mom": "MoM",
+}
+
+SHEET_DATA    = "Data"
+SHEET_SUMMARY = "Summary"
+
+SUMMARY_LEVELS = [
+    {"label": "Summary per AREA",   "dims": ["area"]},
+    {"label": "Summary per REGION", "dims": ["area", "region"]},
+    {"label": "Summary per BRANCH", "dims": ["area", "region", "branch"]},
+    {"label": "Summary per WOK",    "dims": ["area", "region", "branch", "wok"]},
+]
 
 ###############################################################################
 # FUNGSI BANTU
 ###############################################################################
-def validate_env(log):
-    required = ["HOMEDIR"]
-    missing  = [v for v in required if not os.getenv(v)]
-    if missing:
-        log.critical(f"[ENV] Missing required variable(s): {', '.join(missing)}")
-        sys.exit(1)
-    log.info("[ENV] All required variables loaded OK.")
-
-
 def cleanup_old_files(folder, prefix, ext, date_fmt, retention_days, log):
-    """
-    Hapus file di folder yang tanggalnya (dari nama file) lebih dari retention_days
-    dihitung dari hari ini. Nama file format: {prefix}{YYYY_MM_DD}{ext}
-    """
-    today   = datetime.now().date()
-    cutoff  = today - timedelta(days=retention_days)
+    today  = datetime.now().date()
+    cutoff = today - timedelta(days=retention_days)
     deleted = 0
-
-    log.info(f"[CLEANUP] Checking files older than {retention_days} days in: {folder}")
-    log.info(f"[CLEANUP] Cutoff date: {cutoff} (file tanggal <= ini akan dihapus)")
-
+    log.info(f"[CLEANUP] Cek file lebih dari {retention_days} hari di: {folder}")
     for fname in os.listdir(folder):
         if not (fname.startswith(prefix) and fname.endswith(ext)):
             continue
-
         date_str = fname[len(prefix):-len(ext)]
         try:
             file_date = datetime.strptime(date_str, date_fmt).date()
         except ValueError:
             log.warning(f"[CLEANUP] Skip '{fname}': format tanggal tidak dikenali")
             continue
-
         if file_date <= cutoff:
-            fpath = os.path.join(folder, fname)
             try:
-                os.remove(fpath)
+                os.remove(os.path.join(folder, fname))
                 deleted += 1
-                log.info(f"[CLEANUP] Deleted: {fname} (date: {file_date})")
+                log.info(f"[CLEANUP] Deleted: {fname}")
             except Exception as e:
                 log.warning(f"[CLEANUP] Gagal hapus '{fname}': {e}")
-
-    log.info(f"[CLEANUP] Done. {deleted} file(s) deleted.")
-
-
-def clean_csv(path, log):
-    """
-    Baca CSV baris per baris, buang baris yang jumlah field-nya
-    tidak sama dengan header. Return path file CSV yang sudah bersih.
-    """
-    clean_path = path.replace(".csv", "_cleaned.csv")
-    removed    = 0
-
-    with open(path, "r", encoding="utf-8", errors="replace") as fin, \
-         open(clean_path, "w", encoding="utf-8") as fout:
-
-        header   = fin.readline()
-        fout.write(header)
-        expected = header.count(",") + 1
-
-        for i, line in enumerate(fin, start=2):
-            actual = line.count(",") + 1
-            if actual == expected:
-                fout.write(line)
-            else:
-                removed += 1
-                log.warning(
-                    f"[CLEAN] Line {i} dibuang: expected {expected} fields, "
-                    f"got {actual} | {line.rstrip()[:120]}"
-                )
-
-    log.info(f"[CLEAN] Selesai. {removed} baris dibuang. File bersih: {clean_path}")
-    return clean_path
+    log.info(f"[CLEANUP] Selesai. {deleted} file dihapus.")
 
 
-def read_file(path, sheet, cols, log):
-    ext = path.rsplit(".", 1)[-1].lower()
-    if ext == "csv":
-        clean_path = clean_csv(path, log)
-        df = pd.read_csv(clean_path)
-    else:
-        df = pd.read_excel(path, sheet_name=sheet)
-
-    df.columns = df.columns.str.strip()
-
-    if cols:
-        cols = [c.strip() for c in cols]
-        df = df[cols]
-
+def read_csv(path, log):
+    df = pd.read_csv(path)
+    df.columns = df.columns.str.strip().str.lower()
+    # Drop kolom derived dari CSV, akan dihitung ulang
+    df = df.drop(columns=["contribution_sp", "mom"], errors="ignore")
+    log.info(f"[READ] {len(df)} baris, kolom: {list(df.columns)}")
     return df
 
 
-def sanitize_sheet_name(name, max_len=31):
-    for ch in r'\/?*[]:':
-        name = name.replace(ch, "_")
-    return name[:max_len]
+def calc_derived(df, grand_mtd):
+    df = df.copy()
+    total_mtd      = df[METRIC_MTD].sum(axis=1)
+    total_last_mtd = df[METRIC_LAST_MTD].sum(axis=1)
+    sp_today       = df["eznet_today"] + df["onedynamic_today"]
+    df["contribution_sp"] = sp_today.where(df["total_today"] != 0) / df["total_today"].replace(0, float("nan"))
+    df["mom"] = (total_mtd - total_last_mtd).where(total_last_mtd != 0) / total_last_mtd.replace(0, float("nan"))
+    return df
 
 
-def write_excel_by_area(df, path, sheet_col, empty_sheet_name, max_rows, log):
-    mask_empty = df[sheet_col].isna() | (df[sheet_col].astype(str).str.strip() == "")
-    df_empty   = df[mask_empty]
-    df_filled  = df[~mask_empty]
+def build_summary_level(df, dims, grand_mtd, log):
+    agg = df.groupby(dims, as_index=False)[ALL_METRIC_COLS].sum()
 
-    areas = sorted(df_filled[sheet_col].unique())
+    agg_mtd      = agg[METRIC_MTD].sum(axis=1)
+    agg_last_mtd = agg[METRIC_LAST_MTD].sum(axis=1)
 
-    log.info(f"[TRANSFORM] Area ditemukan    : {len(areas)}")
-    log.info(f"[TRANSFORM] Baris tanpa area  : {len(df_empty)}")
+    sp_today_sum   = agg["eznet_today"] + agg["onedynamic_today"]
+    total_today    = agg["total_today"]
+    agg["contribution_sp"] = sp_today_sum.where(total_today != 0) / total_today.replace(0, float("nan"))
+    agg["mom"] = (agg_mtd - agg_last_mtd).where(agg_last_mtd != 0) / agg_last_mtd.replace(0, float("nan"))
 
-    with pd.ExcelWriter(path, engine="openpyxl") as writer:
-        for area in areas:
-            chunk      = df_filled[df_filled[sheet_col] == area].reset_index(drop=True)
-            sheet_name = sanitize_sheet_name(str(area))
+    # Baris TOTAL
+    total_row = {d: "" for d in dims}
+    total_row[dims[0]] = "TOTAL"
+    for col in ALL_METRIC_COLS:
+        total_row[col] = agg[col].sum()
 
-            if len(chunk) <= max_rows:
-                chunk.to_excel(writer, sheet_name=sheet_name, index=False)
-                log.info(f"[TRANSFORM] Sheet '{sheet_name}': {len(chunk)} baris")
+    total_mtd_val      = agg[METRIC_MTD].sum(axis=1).sum()
+    total_last_mtd_val = agg[METRIC_LAST_MTD].sum(axis=1).sum()
+    total_sp_today    = agg["eznet_today"].sum() + agg["onedynamic_today"].sum()
+    total_today_val   = agg["total_today"].sum()
+    total_row["contribution_sp"] = total_sp_today / total_today_val if total_today_val != 0 else float("nan")
+    total_row["mom"] = (
+        (total_mtd_val - total_last_mtd_val) / total_last_mtd_val
+        if total_last_mtd_val != 0 else float("nan")
+    )
+
+    agg = pd.concat([agg, pd.DataFrame([total_row])], ignore_index=True)
+    log.info(f"[SUMMARY] Level {dims}: {len(agg)-1} baris + 1 total")
+    return agg
+
+
+def build_all_summaries(df, log):
+    grand_mtd = df[METRIC_MTD].sum(axis=1).sum()
+    log.info(f"[SUMMARY] Grand total MTD: {grand_mtd:,.0f}")
+
+    all_dims = ["area", "region", "branch", "wok"]
+    out_cols = all_dims + ALL_METRIC_COLS + ["contribution_sp", "mom"]
+
+    frames = []
+    for level in SUMMARY_LEVELS:
+        dims  = level["dims"]
+        label = level["label"]
+
+        label_row = pd.DataFrame([[label] + [""] * (len(out_cols) - 1)], columns=out_cols)
+        agg = build_summary_level(df, dims, grand_mtd, log)
+
+        for d in all_dims:
+            if d not in agg.columns:
+                agg[d] = ""
+        agg = agg[out_cols]
+
+        empty_row = pd.DataFrame([[""] * len(out_cols)], columns=out_cols)
+        frames.extend([empty_row, label_row, agg])
+
+    result = pd.concat(frames, ignore_index=True)
+    return result, out_cols
+
+
+###############################################################################
+# FORMAT EXCEL
+###############################################################################
+def format_data_sheet(ws, out_cols):
+    from openpyxl.styles import Font, PatternFill, Alignment
+    from openpyxl.utils import get_column_letter
+
+    FILL_HEADER = PatternFill("solid", fgColor="1F4E79")
+    FONT_HEADER = Font(bold=True, color="FFFFFF", name="Arial", size=10)
+    FONT_NORMAL = Font(name="Arial", size=10)
+
+    pct_cols = {"Contribution SP", "MoM"}
+    num_cols = set(COL_RENAME[c] for c in ALL_METRIC_COLS)
+
+    for i, col in enumerate(out_cols, start=1):
+        cell = ws.cell(row=1, column=i)
+        cell.font      = FONT_HEADER
+        cell.fill      = FILL_HEADER
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        ws.column_dimensions[get_column_letter(i)].width = max(len(str(col)) + 4, 14)
+
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        for cell in row:
+            cell.font = FONT_NORMAL
+            col_name = out_cols[cell.column - 1] if cell.column <= len(out_cols) else ""
+            if col_name in pct_cols and isinstance(cell.value, float):
+                cell.number_format = "0.00%"
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col_name in num_cols and isinstance(cell.value, (int, float)):
+                cell.number_format = "#,##0"
+                cell.alignment = Alignment(horizontal="right", vertical="center")
             else:
-                for part_idx, start in enumerate(range(0, len(chunk), max_rows), start=1):
-                    part_name = sanitize_sheet_name(f"{sheet_name}_{part_idx}")
-                    part_df   = chunk.iloc[start:start + max_rows]
-                    part_df.to_excel(writer, sheet_name=part_name, index=False)
-                    log.info(f"[TRANSFORM] Sheet '{part_name}': {len(part_df)} baris")
+                cell.alignment = Alignment(horizontal="left", vertical="center")
 
-        if not df_empty.empty:
-            empty_name = sanitize_sheet_name(empty_sheet_name)
-            df_empty.reset_index(drop=True).to_excel(writer, sheet_name=empty_name, index=False)
-            log.info(f"[TRANSFORM] Sheet '{empty_name}': {len(df_empty)} baris")
+    ws.freeze_panes = "A2"
+    ws.row_dimensions[1].height = 30
 
-    log.info(f"[TRANSFORM] Output saved to: {path}")
-    return path
+
+def format_summary_sheet(ws, df_summary, out_cols):
+    from openpyxl.styles import Font, PatternFill, Alignment
+    from openpyxl.utils import get_column_letter
+
+    FILL_HEADER  = PatternFill("solid", fgColor="1F4E79")
+    FILL_TOTAL   = PatternFill("solid", fgColor="D6DCE4")
+    FILL_SECTION = PatternFill("solid", fgColor="BDD7EE")
+
+    FONT_HEADER  = Font(bold=True, color="FFFFFF", name="Arial", size=10)
+    FONT_TOTAL   = Font(bold=True, name="Arial", size=10)
+    FONT_SECTION = Font(bold=True, italic=True, name="Arial", size=10)
+    FONT_NORMAL  = Font(name="Arial", size=10)
+
+    pct_cols = {"Contribution SP", "MoM"}
+    num_cols = set(COL_RENAME[c] for c in ALL_METRIC_COLS)
+
+    for i, col in enumerate(out_cols, start=1):
+        cell = ws.cell(row=1, column=i)
+        cell.font      = FONT_HEADER
+        cell.fill      = FILL_HEADER
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        ws.column_dimensions[get_column_letter(i)].width = max(len(str(col)) + 4, 14)
+
+    for row_idx, row in enumerate(df_summary.itertuples(index=False), start=2):
+        row_dict  = dict(zip(out_cols, row))
+        first_val = str(row_dict.get(out_cols[0], "")).strip()
+
+        is_total   = first_val == "TOTAL"
+        is_empty   = first_val == ""
+        is_section = (
+            not is_total and not is_empty
+            and all(str(row_dict.get(c, "")).strip() == "" for c in out_cols[1:4])
+        )
+
+        for col in out_cols:
+            cell  = ws.cell(row=row_idx, column=out_cols.index(col) + 1)
+            value = row_dict[col]
+
+            if isinstance(value, float) and pd.isna(value):
+                cell.value = None
+            else:
+                cell.value = value if value != "" else None
+
+            if is_section:
+                cell.font = FONT_SECTION
+                cell.fill = FILL_SECTION
+            elif is_total:
+                cell.font = FONT_TOTAL
+                cell.fill = FILL_TOTAL
+            else:
+                cell.font = FONT_NORMAL
+
+            if col in pct_cols and isinstance(value, float) and not pd.isna(value):
+                cell.number_format = "0.00%"
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            elif col in num_cols and isinstance(value, (int, float)):
+                cell.number_format = "#,##0"
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+
+    ws.freeze_panes = "A2"
+    ws.row_dimensions[1].height = 30
+
 
 ###############################################################################
 # FUNGSI UTAMA
 ###############################################################################
 def run(datefiltername, log):
-    """
-    Join CSV hasil extract dengan ref STO, output Excel per AREA.
-    Return: output_path jika sukses, raise Exception jika gagal.
-    """
     os.makedirs(OUTPUTDIR, exist_ok=True)
 
-    file_left   = os.path.join(DOWNLOADDIR, f"homepass_per_odp_{datefiltername}.csv")
-    output_file = os.path.join(OUTPUTDIR,   f"homepass_per_odp_{datefiltername}.xlsx")
+    input_file  = os.path.join(INPUTDIR,  f"{FILE_PREFIX}{datefiltername}{FILE_EXT_IN}")
+    output_file = os.path.join(OUTPUTDIR, f"{FILE_PREFIX}{datefiltername}{FILE_EXT_OUT}")
 
-    log.info(f"[TRANSFORM] Input CSV  : {file_left}")
-    log.info(f"[TRANSFORM] Input REF  : {FILE_RIGHT}")
-    log.info(f"[TRANSFORM] Output     : {output_file}")
+    log.info(f"[TRANSFORM] Input  : {input_file}")
+    log.info(f"[TRANSFORM] Output : {output_file}")
 
-    # Validasi input files
-    if not os.path.exists(file_left):
-        raise FileNotFoundError(f"CSV input not found: {file_left}")
-    if not os.path.exists(FILE_RIGHT):
-        raise FileNotFoundError(f"REF file not found: {FILE_RIGHT}")
+    if not os.path.exists(input_file):
+        raise FileNotFoundError(f"File input tidak ditemukan: {input_file}")
 
-    # Cleanup file Excel lama di OUTPUTDIR
-    cleanup_old_files(
-        folder         = OUTPUTDIR,
-        prefix         = FILE_PREFIX,
-        ext            = FILE_EXT_OUT,
-        date_fmt       = DATE_FORMAT,
-        retention_days = RETENTION_DAYS,
-        log            = log,
-    )
+    cleanup_old_files(OUTPUTDIR, FILE_PREFIX, FILE_EXT_OUT, DATE_FORMAT, RETENTION_DAYS, log)
 
-    # Read
-    log.info(f"[TRANSFORM] Reading CSV ...")
-    df_left = read_file(file_left, 0, None, log)
-    log.info(f"[TRANSFORM] CSV rows: {len(df_left)}, cols: {list(df_left.columns)}")
+    df = read_csv(input_file, log)
 
-    log.info(f"[TRANSFORM] Reading REF STO ...")
-    df_right = read_file(FILE_RIGHT, SHEET_RIGHT, COLS_RIGHT, log)
-    log.info(f"[TRANSFORM] REF rows: {len(df_right)}, cols: {list(df_right.columns)}")
+    missing_cols = [c for c in DIM_COLS + ALL_METRIC_COLS if c not in df.columns]
+    if missing_cols:
+        raise ValueError(f"Kolom tidak ditemukan di CSV: {missing_cols}")
 
-    # Cast join keys ke string dan strip
-    col_left  = JOIN_ON["left"]
-    col_right = JOIN_ON["right"]
-    df_left[col_left]   = df_left[col_left].astype(str).str.strip()
-    df_right[col_right] = df_right[col_right].astype(str).str.strip()
-    log.info(f"[TRANSFORM] Join key cast OK. LEFT: '{col_left}', RIGHT: '{col_right}'")
+    grand_mtd = df[METRIC_MTD].sum(axis=1).sum()
 
-    # Join
-    log.info(f"[TRANSFORM] Performing {JOIN_TYPE.upper()} JOIN ...")
-    df_result = pd.merge(df_left, df_right, how=JOIN_TYPE,
-                         left_on=col_left, right_on=col_right)
-    log.info(f"[TRANSFORM] Join result: {len(df_result)} rows")
+    # Sheet Data
+    df_data       = calc_derived(df, grand_mtd)
+    data_raw_cols = DIM_COLS + ALL_METRIC_COLS + ["contribution_sp", "mom"]
+    df_data_out   = df_data[data_raw_cols].rename(columns=COL_RENAME)
+    data_out_cols = list(df_data_out.columns)
 
-    # Drop
-    df_result = df_result.drop(columns=[c for c in DROP_COLS if c in df_result.columns])
+    # Sheet Summary
+    log.info("[SUMMARY] Membangun summary semua level ...")
+    df_summary_raw, summary_raw_cols = build_all_summaries(df, log)
+    df_summary_out   = df_summary_raw.rename(columns=COL_RENAME)
+    summary_out_cols = [COL_RENAME.get(c, c) for c in summary_raw_cols]
 
-    # Rename
-    df_result = df_result.rename(columns=RENAME_COLS)
+    # Tulis Excel
+    log.info(f"[WRITE] Menulis Excel: {output_file}")
+    with pd.ExcelWriter(output_file, engine="openpyxl") as writer:
+        df_data_out.to_excel(writer, sheet_name=SHEET_DATA, index=False)
+        df_summary_out.to_excel(writer, sheet_name=SHEET_SUMMARY, index=False)
 
-    # Reorder kolom
-    ordered   = [c for c in OUTPUT_COL_ORDER if c in df_result.columns]
-    rest      = [c for c in df_result.columns if c not in ordered]
-    df_result = df_result[ordered + rest]
-    log.info(f"[TRANSFORM] Output cols: {list(df_result.columns)}")
+        wb = writer.book
+        format_data_sheet(wb[SHEET_DATA], data_out_cols)
+        format_summary_sheet(wb[SHEET_SUMMARY], df_summary_out, summary_out_cols)
 
-    # Write Excel
-    output_path = write_excel_by_area(
-        df_result, output_file, SHEET_COL, SHEET_EMPTY, MAX_ROWS_SHEET, log
-    )
-
-    return output_path
+    log.info(f"[WRITE] Selesai. Output: {output_file}")
+    return output_file
 
 
 ###############################################################################
-# STANDALONE RUN (opsional, bisa dirun langsung)
+# STANDALONE
 ###############################################################################
 if __name__ == "__main__":
     import logging
+
     datefiltername = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
 
     logging.basicConfig(
         level=logging.INFO,
         format="[%(asctime)s] [%(levelname)s] %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        handlers=[logging.StreamHandler(sys.stdout)]
+        handlers=[logging.StreamHandler(sys.stdout)],
     )
     log = logging.getLogger()
 
     try:
         result = run(datefiltername, log)
-        log.info(f"[TRANSFORM] Done. File at: {result}")
+        log.info(f"[DONE] File output: {result}")
     except Exception as e:
-        log.error(f"[TRANSFORM] Failed: {e}")
+        log.error(f"[FAILED] {e}")
         sys.exit(1)

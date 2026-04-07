@@ -32,7 +32,7 @@ DOWNLOADDIR = os.path.join(HOMEDIR, "DOWNLOAD", "ps_per_product")
 FILE_PREFIX    = "ps_per_product_"
 FILE_EXT       = ".csv"
 DATE_FORMAT    = "%Y_%m_%d"
-RETENTION_DAYS = 31
+RETENTION_DAYS = 7
 
 ###############################################################################
 # FUNGSI BANTU

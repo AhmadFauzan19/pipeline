@@ -22,7 +22,7 @@ SCRIPT_VERSION = "2.0.0"
 
 HOMEDIR = os.getenv("HOMEDIR")
 LOGDIR             = os.path.join(HOMEDIR, "LOGS", "homepass_per_odp")
-LOG_RETENTION_DAYS = 30
+LOG_RETENTION_DAYS = 7
 
 ###############################################################################
 # SETUP

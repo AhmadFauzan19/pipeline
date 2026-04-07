@@ -20,7 +20,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # CONFIG
 ###############################################################################
 HOMEDIR = os.getenv("HOMEDIR")
-ONEDRIVE = os.getenv("ONEDRIVE")
+ONEDRIVE = r"C:\Users\ahmadfan\OneDrive - PT Telekomunikasi Selular\Household Business Growth Strategy & Alignment - Data Homepass"
 OUTPUTDIR = os.path.join(HOMEDIR, "OUTPUT", "homepass_per_odp")
 
 FILE_PREFIX    = "homepass_per_odp_"
@@ -32,7 +32,7 @@ RETENTION_DAYS = 7   # file dengan tanggal lebih dari ini (dari hari ini) akan d
 # FUNGSI BANTU
 ###############################################################################
 def validate_env(log):
-    required = ["HOMEDIR", "ONEDRIVE"]
+    required = ["HOMEDIR"]
     missing  = [v for v in required if not os.getenv(v)]
     if missing:
         log.critical(f"[ENV] Missing required variable(s): {', '.join(missing)}")
